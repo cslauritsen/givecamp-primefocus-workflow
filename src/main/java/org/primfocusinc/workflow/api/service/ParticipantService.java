@@ -21,7 +21,7 @@ public class ParticipantService {
 
     public void save(String verifyId,Map<String, Object> body) throws Exception {
 
-        String id = UUID.randomUUID().toString();
+        String id = UUID.randomUUID().toString(); //improve this part if we recived from FrontEnd or create a pattern
 
         firestoreService.save("participants",id,body);
     }
