@@ -1,40 +1,30 @@
 package org.primfocusinc.workflow.api.controller;
 
-import org.primfocusinc.workflow.api.model.Participant;
 import org.primfocusinc.workflow.api.service.ParticipantService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api/v1")
 public class RestApiController {
 
-    @Autowired
-    ParticipantService participantService;
+    private final ParticipantService participantService;
 
-    @GetMapping
-    public List<Participant> getAllParticipant()  {
-        return null;
+    public RestApiController(ParticipantService participantService) {
+        this.participantService = participantService;
     }
 
-    @GetMapping("/{id}")
-    public Participant getByParticipantId(@PathVariable String id) {
-        return participantService.getParticipantById(id);
+    @PostMapping("/registration")
+    public ResponseEntity<Map<String, Object>> createParticipant(
+            @RequestBody Map<String, Object> body){
+
+        body.forEach((key, value) -> {
+            System.out.println(key + " = " + value);
+        });
+        return ResponseEntity.ok(body);
     }
 
-    @PostMapping
-    public void createIdParticipant(@RequestBody Participant participant) {
-        participantService.createParticipant(participant);
-    }
-
-    @PutMapping("/{id}")
-    public void updateParticipant(@PathVariable String id, @RequestBody Participant participant) {
-        participantService.updateParticipant(id, participant);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteParticipant(@PathVariable String id) {
-       ParticipantService.deleteParticipant(id);
-    }
 }

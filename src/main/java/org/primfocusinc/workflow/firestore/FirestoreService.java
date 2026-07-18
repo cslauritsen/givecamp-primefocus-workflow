@@ -1,6 +1,5 @@
 package org.primfocusinc.workflow.firestore;
 
-import com.gianidev.springfirestore.firestore.FirestoreManager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FirestoreService {
 
-  private org.primfocusinc.workflow.firestore.Firestore firestore;
+  private Firestore firestore;
 
   public FirestoreService()
       throws IOException {

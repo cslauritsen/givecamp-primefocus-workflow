@@ -1,26 +1,14 @@
 package org.primfocusinc.workflow.api.service;
 
-import org.primfocusinc.workflow.api.model.Participant;
+import org.primfocusinc.workflow.firestore.FirestoreService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ParticipantService {
 
+    private final FirestoreService firestoreService;
 
-
-
-    public static void deleteParticipant(String id) {
+    public ParticipantService(FirestoreService firestoreService) {
+        this.firestoreService = firestoreService;
     }
-
-    public Participant getParticipantById(String id) {
-    }
-
-    public void createParticipant(Participant participant) {
-    }
-
-
-    public void updateParticipant(String id, Participant participant) {
-    }
-
-
 }
